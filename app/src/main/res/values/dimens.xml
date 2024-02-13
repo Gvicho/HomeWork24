@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="grey_text_size_very_small">14sp</dimen>
+    <dimen name="grey_text_size_small">18sp</dimen>
+    <dimen name="grey_text_size_big">21sp</dimen>
+    <dimen name="marginLeftText">15dp</dimen>
+    <dimen name="marginBottomText">20dp</dimen>
+    <dimen name="storyFrameWidth">140dp</dimen>
+    <dimen name="storyFrameHeight">200dp</dimen>
+    <dimen name="storyFrameTextWidth">80dp</dimen>
+    <dimen name="storyItemMarginLeft">10dp</dimen>
+    <dimen name="postItemMarginLeft">15dp</dimen>
+    <dimen name="postItemMarginLeft1">8dp</dimen>
+    <dimen name="postItemMarginTop">20dp</dimen>
+    <dimen name="postItemMarginTop1">10dp</dimen>
+    <dimen name="postItemShapeImageDim">48dp</dimen>
+</resources>

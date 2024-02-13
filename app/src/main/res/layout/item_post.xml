@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_item_story"
+    android:layout_marginHorizontal="@dimen/postItemMarginLeft"
+    android:layout_marginTop="@dimen/postItemMarginTop">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/postOwnerImage"
+        android:layout_width="@dimen/postItemShapeImageDim"
+        android:layout_height="@dimen/postItemShapeImageDim"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:layout_marginTop="@dimen/postItemMarginTop"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CircleShape"
+        android:src="@drawable/ic_account"/>
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:layout_marginTop="@dimen/postItemMarginTop"
+        android:text="@string/noone_noone"
+        android:textAppearance="@style/post_owner_name"
+        app:layout_constraintStart_toEndOf="@+id/postOwnerImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:layout_marginTop="@dimen/postItemMarginTop1"
+        android:text="@string/_20_april_at_4_20pm"
+        android:textAppearance="@style/post_date"
+        app:layout_constraintStart_toEndOf="@+id/postOwnerImage"
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+    <TextView
+        android:id="@+id/tvBodyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/postItemMarginLeft"
+        android:layout_marginTop="@dimen/postItemMarginTop"
+        app:layout_constraintTop_toBottomOf="@+id/postOwnerImage" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image1"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/image2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBodyTitle"
+        app:shapeAppearanceOverlay="@style/RoundedCorners" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image2"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image1"
+        app:layout_constraintTop_toBottomOf="@+id/tvBodyTitle"
+        app:shapeAppearanceOverlay="@style/RoundedCorners" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image3"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/image2"
+        app:layout_constraintStart_toStartOf="@+id/image2"
+        app:layout_constraintTop_toBottomOf="@+id/image2"
+        app:shapeAppearanceOverlay="@style/RoundedCorners" />
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="@dimen/postItemMarginLeft"
+        android:layout_marginTop="15dp"
+        android:background="@color/white_line"
+        app:layout_constraintTop_toBottomOf="@id/image1" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/commentImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:layout_marginTop="@dimen/postItemMarginTop"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_comment_22"
+        app:layout_constraintEnd_toStartOf="@+id/tvCommentsQuantity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <TextView
+        android:id="@+id/tvCommentsQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_7_comments"
+        android:textAppearance="@style/post_date"
+        app:layout_constraintBottom_toBottomOf="@+id/commentImageButton"
+        app:layout_constraintEnd_toStartOf="@+id/heartImage"
+        app:layout_constraintStart_toEndOf="@+id/commentImageButton"
+        app:layout_constraintTop_toTopOf="@+id/commentImageButton" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/heartImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_heart_graey"
+        app:layout_constraintBottom_toBottomOf="@+id/tvCommentsQuantity"
+        app:layout_constraintEnd_toStartOf="@+id/tvLikesQuantity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvCommentsQuantity"
+        app:layout_constraintTop_toTopOf="@+id/tvCommentsQuantity" />
+
+    <TextView
+        android:id="@+id/tvLikesQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_49_likes"
+        android:textAppearance="@style/post_date"
+        app:layout_constraintBottom_toBottomOf="@+id/heartImage"
+        app:layout_constraintEnd_toStartOf="@+id/shareImage"
+        app:layout_constraintStart_toEndOf="@+id/heartImage"
+        app:layout_constraintTop_toTopOf="@+id/heartImage" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/shareImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:background="@color/transparent"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="@+id/tvLikesQuantity"
+        app:layout_constraintEnd_toStartOf="@+id/tvSharesQuantity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvLikesQuantity"
+        app:layout_constraintTop_toTopOf="@+id/tvLikesQuantity" />
+
+    <TextView
+        android:id="@+id/tvSharesQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/postItemMarginLeft"
+        android:text="@string/share"
+        android:textAppearance="@style/post_date"
+        app:layout_constraintBottom_toBottomOf="@+id/shareImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/shareImage"
+        app:layout_constraintTop_toTopOf="@+id/shareImage" />
+
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/postItemMarginTop"
+        android:background="@color/white_line"
+        app:layout_constraintTop_toBottomOf="@id/commentImageButton" />
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/userImage"
+        android:layout_width="@dimen/postItemShapeImageDim"
+        android:layout_height="@dimen/postItemShapeImageDim"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:layout_marginTop="@dimen/postItemMarginTop"
+        android:background="@color/item_background_green"
+        app:layout_constraintEnd_toStartOf="@+id/appCompatEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line2"
+        app:shapeAppearanceOverlay="@style/CircleShape"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        android:src="@drawable/ic_account"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/appCompatEditText"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/userImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/userImage"
+        app:layout_constraintTop_toTopOf="@+id/userImage"
+        android:layout_marginStart="@dimen/postItemMarginLeft"
+        android:background="@drawable/shape_post_comment_edittext"
+        android:drawableEnd="@drawable/ic_paper_clipper"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/userImage" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HomeWork24</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="when_you_wake_up">When you wake up</string>
+    <string name="noone_noone">NoOne NoOne</string>
+    <string name="_20_april_at_4_20pm">20 April at 4:20PM</string>
+    <string name="_7_comments">7 Comments</string>
+    <string name="_49_likes">49 Likes</string>
+    <string name="share">Share</string>
+    <string name="liked">Liked</string>
+    <string name="home">Home</string>
+    <string name="comments">Comments</string>
+    <string name="notifications">Notifications</string>
+</resources>
