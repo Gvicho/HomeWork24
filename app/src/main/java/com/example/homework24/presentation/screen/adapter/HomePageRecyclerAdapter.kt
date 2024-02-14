@@ -41,15 +41,15 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
         private val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
         fun bind(position: Int){
 
-            val post = currentList[position].post
+            val postObject = currentList[position].post
 
 
-            post?.let {post->
+            postObject?.let {post->
 
                 val owner = post.owner
 
                 loadImages(post.images)
-                loadPostOwnerProfileImage(owner.profile)
+                if(owner.profile.isNotEmpty())loadPostOwnerProfileImage(owner.profile)
                 binding.apply {
                     tvBodyTitle.text = post.title
                     tvDate.text = getDateString(owner.postDate)
@@ -64,11 +64,12 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
         }
         private fun getDateString(time: Long) : String = simpleDateFormat.format(time * 1000L)
 
+        /*
         private fun loadUserProfileImage(profileImage:String){
             Glide.with(itemView.context)
                 .load(profileImage)
                 .into(binding.userImage)
-        }
+        }*/
 
         private fun loadPostOwnerProfileImage(profileImage:String){
             Glide.with(itemView.context)

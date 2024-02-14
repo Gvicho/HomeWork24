@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/storyFrameWidth"
     android:layout_height="@dimen/storyFrameHeight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/shape_item_story"
     android:layout_marginEnd="@dimen/storyItemMarginLeft">
 
@@ -9,7 +10,8 @@
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/RoundedCorners"/>
 
     <TextView
         android:id="@+id/tvTitle"
