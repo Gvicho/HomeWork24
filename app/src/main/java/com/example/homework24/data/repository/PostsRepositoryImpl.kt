@@ -24,4 +24,12 @@ class PostsRepositoryImpl@Inject constructor(
             }
         }
     }
+
+    override fun getPostsDetails(id:Int): Flow<ResultWrapper<Post>> {
+        return handleResponse.safeApiCall {
+            postsService.getPostDetails(id)
+        }.mapResultWrapper {post->
+            post.toDomain()
+        }
+    }
 }

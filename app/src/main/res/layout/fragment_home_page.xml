@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.screen.HomePageFragment"
+    tools:context=".presentation.screen.home.HomePageFragment"
     android:background="@color/background">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -19,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:layout_gravity="bottom|center_horizontal"/>
+        android:layout_gravity="bottom|center_horizontal"
+        android:visibility="gone"/>
 
 </FrameLayout>

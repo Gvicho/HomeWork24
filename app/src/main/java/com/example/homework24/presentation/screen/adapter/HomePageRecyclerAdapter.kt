@@ -6,15 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.homework24.databinding.ItemPostBinding
 import com.example.homework24.databinding.ItemStoryRecyclerBinding
+import com.example.homework24.presentation.extensions.convertToDateString
+import com.example.homework24.presentation.extensions.loadImageWithGlide
 import com.example.homework24.presentation.model.HomePageItemUI
 import com.example.homework24.presentation.model.ItemType
-import java.text.SimpleDateFormat
-import java.util.Locale
 
-class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewHolder>(
+class HomePageRecyclerAdapter(
+    private val listener:ClickCallBack
+) : ListAdapter<HomePageItemUI, RecyclerView.ViewHolder>(
     DIFF_CALLBACK
 ) {
     lateinit var myAdapter: StoryRecyclerAdapter
@@ -38,7 +39,6 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
     }
 
     inner class PostItemViewHolder(private val binding: ItemPostBinding):RecyclerView.ViewHolder(binding.root){
-        private val simpleDateFormat = SimpleDateFormat("dd MMMM yyyy, HH:mm:ss", Locale.ENGLISH)
         fun bind(position: Int){
 
             val postObject = currentList[position].post
@@ -52,17 +52,20 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
                 if(owner.profile.isNotEmpty())loadPostOwnerProfileImage(owner.profile)
                 binding.apply {
                     tvBodyTitle.text = post.title
-                    tvDate.text = getDateString(owner.postDate)
+                    tvDate.text = owner.postDate.convertToDateString()
                     tvName.text = owner.name
                     tvLikesQuantity.text = post.likes.toString()
                     tvSharesQuantity.text = post.shareContent
                     tvCommentsQuantity.text = post.comments.toString()
+
+                    root.setOnClickListener{
+                        listener.postClicked(post.id)
+                    }
                 }
 
             }
 
         }
-        private fun getDateString(time: Long) : String = simpleDateFormat.format(time * 1000L)
 
         /*
         private fun loadUserProfileImage(profileImage:String){
@@ -72,9 +75,7 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
         }*/
 
         private fun loadPostOwnerProfileImage(profileImage:String){
-            Glide.with(itemView.context)
-                .load(profileImage)
-                .into(binding.postOwnerImage)
+            itemView.context.loadImageWithGlide(profileImage,binding.postOwnerImage)
         }
 
         private fun loadImages(list:List<String>){
@@ -82,21 +83,15 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
 
                 if(list.size >= 1){
                     image1.visibility = View.VISIBLE
-                    Glide.with(itemView.context)
-                        .load(list[0])
-                        .into(image1)
+                    itemView.context.loadImageWithGlide(list[0],image1)
                 }
                 if(list.size >= 2){
                     image2.visibility = View.VISIBLE
-                    Glide.with(itemView.context)
-                        .load(list[1])
-                        .into(image2)
+                    itemView.context.loadImageWithGlide(list[1],image2)
                 }
                 if(list.size >= 3){
                     image3.visibility = View.VISIBLE
-                    Glide.with(itemView.context)
-                        .load(list[2])
-                        .into(image3)
+                    itemView.context.loadImageWithGlide(list[2],image3)
                 }
             }
         }
@@ -135,4 +130,8 @@ class HomePageRecyclerAdapter() : ListAdapter<HomePageItemUI, RecyclerView.ViewH
         if(holder is PostItemViewHolder) holder.bind(position)
         else if(holder is StoryRecyclerViewHolder)holder.bind(position)
     }
+}
+
+interface ClickCallBack{
+    fun postClicked(id:Int)
 }

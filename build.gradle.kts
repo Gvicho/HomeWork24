@@ -4,6 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.22" apply false
     id("com.google.dagger.hilt.android") version "2.47" apply false // for Hilt
     id("com.google.devtools.ksp") version "1.9.22-1.0.17" apply false // for KSP  (here I had a problem with versions)
+    id("com.google.gms.google-services") version "4.4.1" apply false// for FireBase
 }
 
 // safeargs

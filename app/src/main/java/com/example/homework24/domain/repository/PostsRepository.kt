@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostsRepository {
     fun getPosts(): Flow<ResultWrapper<List<Post>>>
+
+    fun getPostsDetails(id:Int): Flow<ResultWrapper<Post>>
 }
