@@ -33,14 +33,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         requestPermission()
         binding.bottomNavigation.selectedItemId = R.id.navigation_home
+    }
 
-
+    override fun onStart() {
+        super.onStart()
+        handleIntent(intent)
+        intent.extras?.clear()
+        intent = Intent()
     }
 
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
+        intent.extras?.clear()
+        setIntent(Intent())
     }
 
     private fun handleIntent(intent: Intent) {
