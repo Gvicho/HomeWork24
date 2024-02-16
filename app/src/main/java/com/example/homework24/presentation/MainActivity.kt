@@ -37,17 +37,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d("tag123","activity onStart")
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("tag123","activity onResume")
-        handleIntent(intent)
-    }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
