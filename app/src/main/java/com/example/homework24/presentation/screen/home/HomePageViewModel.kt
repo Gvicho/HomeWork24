@@ -3,11 +3,14 @@ package com.example.homework24.presentation.screen.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.homework24.domain.resoult_wraper.ResultWrapper
+import com.example.homework24.domain.usecase.AbstractGetPostsUseCase
+import com.example.homework24.domain.usecase.AbstractGetStoryUseCase
 import com.example.homework24.domain.usecase.GetPostsUseCase
 import com.example.homework24.domain.usecase.GetStoryUseCase
 import com.example.homework24.presentation.event.HomePageEvents
 import com.example.homework24.presentation.mappers.toHomePageItem
 import com.example.homework24.presentation.mappers.toUI
+import com.example.homework24.presentation.screen.home.dispatcher.DispatcherProvider
 import com.example.homework24.presentation.state.HomePageState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -23,8 +26,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomePageViewModel@Inject constructor(
-    private val getPostsUseCase: GetPostsUseCase,
-    private val getStoryUseCase: GetStoryUseCase
+    private val getPostsUseCase: AbstractGetPostsUseCase,
+    private val getStoryUseCase: AbstractGetStoryUseCase,
+    private val dispatchers: DispatcherProvider
 ):ViewModel() {
 
     private val _uiStateFlow = MutableStateFlow(HomePageState())
@@ -49,12 +53,12 @@ class HomePageViewModel@Inject constructor(
         }
     }
 
-    private fun emitNavigationToDetailsPageEvent(id:Int) = viewModelScope.launch {
+    private fun emitNavigationToDetailsPageEvent(id:Int) = viewModelScope.launch(dispatchers.main) {
         _navigationEventFlow.emit(HomePageNavigationEvent.NavigateToDetails(id))
     }
 
     private fun loadPage(){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(dispatchers.io) {
 
             getStoryUseCase().collect(){result->
                 when(result){
