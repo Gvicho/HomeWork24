@@ -23,6 +23,16 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.com.example.homework24"
+                    android:scheme="https"
+                    android:pathPrefix="/details" />
+
             </intent-filter>
         </activity>
 

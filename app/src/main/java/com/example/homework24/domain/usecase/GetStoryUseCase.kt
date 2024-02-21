@@ -6,10 +6,10 @@ import com.example.homework24.domain.repository.StoryRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetStoryUseCase@Inject constructor(
+class GetStoryUseCase(
     private val storyRepository: StoryRepository
-) {
-    operator fun invoke(): Flow<ResultWrapper<List<Story>>> {
+):AbstractGetStoryUseCase {
+    override operator fun invoke(): Flow<ResultWrapper<List<Story>>> {
         return storyRepository.getStory()
     }
 }

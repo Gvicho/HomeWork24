@@ -1,6 +1,5 @@
 package com.example.homework24.presentation.screen.home
 
-import android.util.Log.d
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
@@ -27,10 +26,9 @@ class HomePageFragment : BaseFragment<FragmentHomePageBinding>(FragmentHomePageB
     private lateinit var myAdapter: HomePageRecyclerAdapter
 
     override fun bind() {
-        d("tag123", "fragment onCreate")
+        viewModel.onEvent(HomePageEvents.LoadPage)
         myAdapter = HomePageRecyclerAdapter(this)
         binding.recyclerView.adapter = myAdapter
-
     }
 
     override fun bindObservers() {
