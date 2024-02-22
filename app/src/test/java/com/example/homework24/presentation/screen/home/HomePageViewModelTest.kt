@@ -23,7 +23,6 @@ import org.junit.Before
 import org.junit.Test
 
 class HomePageViewModelTest {
-
     private lateinit var viewModel:HomePageViewModel
     private val testDispatcher = TestDispatchers()
     private val mockGetPostsUseCase = mockk<AbstractGetPostsUseCase>()
